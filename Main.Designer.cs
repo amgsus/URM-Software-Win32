@@ -82,6 +82,7 @@
             this.mniAutomationTimerSetInterval = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.mniAutomationTimerEnable = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.menuStrip.SuspendLayout();
             this.grpO1.SuspendLayout();
             this.grpO3.SuspendLayout();
@@ -210,6 +211,7 @@
             this.txtHintO1.Name = "txtHintO1";
             this.txtHintO1.Size = new System.Drawing.Size(208, 20);
             this.txtHintO1.TabIndex = 1;
+            this.txtHintO1.DoubleClick += new System.EventHandler(this.txtHintO1_DoubleClick);
             // 
             // chkO1
             // 
@@ -239,6 +241,7 @@
             this.txtHintO3.Name = "txtHintO3";
             this.txtHintO3.Size = new System.Drawing.Size(208, 20);
             this.txtHintO3.TabIndex = 1;
+            this.txtHintO3.DoubleClick += new System.EventHandler(this.txtHintO1_DoubleClick);
             // 
             // chkO3
             // 
@@ -268,6 +271,7 @@
             this.txtHintO2.Name = "txtHintO2";
             this.txtHintO2.Size = new System.Drawing.Size(208, 20);
             this.txtHintO2.TabIndex = 1;
+            this.txtHintO2.DoubleClick += new System.EventHandler(this.txtHintO1_DoubleClick);
             // 
             // chkO2
             // 
@@ -297,6 +301,7 @@
             this.txtHintO4.Name = "txtHintO4";
             this.txtHintO4.Size = new System.Drawing.Size(208, 20);
             this.txtHintO4.TabIndex = 1;
+            this.txtHintO4.DoubleClick += new System.EventHandler(this.txtHintO1_DoubleClick);
             // 
             // chkO4
             // 
@@ -347,6 +352,7 @@
             this.txtHintI4.Name = "txtHintI4";
             this.txtHintI4.Size = new System.Drawing.Size(208, 20);
             this.txtHintI4.TabIndex = 1;
+            this.txtHintI4.DoubleClick += new System.EventHandler(this.txtHintO1_DoubleClick);
             // 
             // grpI2
             // 
@@ -376,6 +382,7 @@
             this.txtHintI2.Name = "txtHintI2";
             this.txtHintI2.Size = new System.Drawing.Size(208, 20);
             this.txtHintI2.TabIndex = 1;
+            this.txtHintI2.DoubleClick += new System.EventHandler(this.txtHintO1_DoubleClick);
             // 
             // grpI3
             // 
@@ -405,6 +412,7 @@
             this.txtHintI3.Name = "txtHintI3";
             this.txtHintI3.Size = new System.Drawing.Size(208, 20);
             this.txtHintI3.TabIndex = 1;
+            this.txtHintI3.DoubleClick += new System.EventHandler(this.txtHintO1_DoubleClick);
             // 
             // grpI1
             // 
@@ -434,6 +442,7 @@
             this.txtHintI1.Name = "txtHintI1";
             this.txtHintI1.Size = new System.Drawing.Size(208, 20);
             this.txtHintI1.TabIndex = 1;
+            this.txtHintI1.DoubleClick += new System.EventHandler(this.txtHintO1_DoubleClick);
             // 
             // tim
             // 
@@ -653,6 +662,7 @@
         private System.Windows.Forms.ToolStripMenuItem mniAutomationTimerSetInterval;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mniAutomationTimerEnable;
+        private System.Windows.Forms.ColorDialog colorDialog;
     }
 }
 

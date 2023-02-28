@@ -241,13 +241,21 @@ namespace URM
         private void mniWorkspaceNew_Click(object sender, EventArgs e)
         {
             txtHintO1.Text = "";
+            txtHintO1.BackColor = SystemColors.Window;
             txtHintO2.Text = "";
+            txtHintO2.BackColor = SystemColors.Window;
             txtHintO3.Text = "";
+            txtHintO3.BackColor = SystemColors.Window;
             txtHintO4.Text = "";
+            txtHintO4.BackColor = SystemColors.Window;
             txtHintI1.Text = "";
+            txtHintI1.BackColor = SystemColors.Window;
             txtHintI2.Text = "";
+            txtHintI2.BackColor = SystemColors.Window;
             txtHintI3.Text = "";
+            txtHintI3.BackColor = SystemColors.Window;
             txtHintI4.Text = "";
+            txtHintI4.BackColor = SystemColors.Window;
         }
 
         private void mniWorkspaceSave_Click(object sender, EventArgs e)
@@ -272,8 +280,17 @@ namespace URM
             list.Add(txtHintI3.Text);
             list.Add(txtHintI4.Text);
 
-            try
-            {
+            list.Add(txtHintO1.BackColor.ToArgb().ToString());
+            list.Add(txtHintO2.BackColor.ToArgb().ToString());
+            list.Add(txtHintO3.BackColor.ToArgb().ToString());
+            list.Add(txtHintO4.BackColor.ToArgb().ToString());
+
+            list.Add(txtHintI1.BackColor.ToArgb().ToString());
+            list.Add(txtHintI2.BackColor.ToArgb().ToString());
+            list.Add(txtHintI3.BackColor.ToArgb().ToString());
+            list.Add(txtHintI4.BackColor.ToArgb().ToString());
+
+            try {
                 string[] lines = list.ToArray();
                 File.WriteAllLines(WORKSPACE_FILE_NAME, lines);
             }
@@ -300,8 +317,17 @@ namespace URM
                     txtHintI2.Text = lines.Length > 5 ? lines[5] : "";
                     txtHintI3.Text = lines.Length > 6 ? lines[6] : "";
                     txtHintI4.Text = lines.Length > 7 ? lines[7] : "";
-                }
-                catch (Exception ex)
+
+                    txtHintO1.BackColor = lines.Length >  8 ? Color.FromArgb(int.Parse(lines[ 8])) : SystemColors.Window;
+                    txtHintO2.BackColor = lines.Length >  9 ? Color.FromArgb(int.Parse(lines[ 9])) : SystemColors.Window;
+                    txtHintO3.BackColor = lines.Length > 10 ? Color.FromArgb(int.Parse(lines[10])) : SystemColors.Window;
+                    txtHintO4.BackColor = lines.Length > 11 ? Color.FromArgb(int.Parse(lines[11])) : SystemColors.Window;
+
+                    txtHintI1.BackColor = lines.Length > 12 ? Color.FromArgb(int.Parse(lines[12])) : SystemColors.Window;
+                    txtHintI2.BackColor = lines.Length > 13 ? Color.FromArgb(int.Parse(lines[13])) : SystemColors.Window;
+                    txtHintI3.BackColor = lines.Length > 14 ? Color.FromArgb(int.Parse(lines[14])) : SystemColors.Window;
+                    txtHintI4.BackColor = lines.Length > 15 ? Color.FromArgb(int.Parse(lines[15])) : SystemColors.Window;
+                } catch (Exception ex)
                 {
                     MessageBox.Show(this, ex.Message, "Reload Workspace", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -409,6 +435,14 @@ namespace URM
                 log("Timer is enabled");
             } else {
                 log("Timer is disabled");
+            }
+        }
+
+        private void txtHintO1_DoubleClick(object sender, EventArgs e) {
+            TextBox txt = (TextBox) sender;
+            colorDialog.Color = txt.BackColor;
+            if (colorDialog.ShowDialog() == DialogResult.OK) {
+                txt.BackColor = colorDialog.Color;
             }
         }
     }
