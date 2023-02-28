@@ -27,6 +27,9 @@ namespace URM
         private byte _lastCommand = 0;
         private bool _preventCheckedChangedEvent = false;
 
+        private byte _timTarget = 0;
+        private byte _timAction = 0;
+
         private void mnuPort_DropDownOpening(object sender, EventArgs e)
         {
             string[] availablePorts = SerialPort.GetPortNames();
@@ -330,6 +333,83 @@ namespace URM
             grpI2.Enabled = enabled;
             grpI3.Enabled = enabled;
             grpI4.Enabled = enabled;
+        }
+
+        private void mniAutomationTimerSetInterval_Click(object sender, EventArgs e) {
+            int currentInterval = tim.Interval;
+            AutomationTimerDialog dlg = new AutomationTimerDialog();
+            dlg.Interval = currentInterval;
+            if (dlg.ShowDialog() == DialogResult.OK) {
+                bool enabled = tim.Enabled;
+                tim.Enabled = false;
+                tim.Interval = dlg.Interval;
+                tim.Enabled = enabled;
+                mniAutomationTimerEnable.Enabled = true;
+                log($"Timer is set to {tim.Interval} milliseconds");
+            }
+        }
+
+        private void log(string msg) {
+            txtLog.Text = $"[{DateTime.Now}] {msg}\r\n" + txtLog.Text;
+        }
+
+        private void tim_Tick(object sender, EventArgs e) {
+            log("Timer event");
+
+            byte outputMask = (byte)(1 << _timTarget);
+            byte command = (byte)((chkO1.Checked ? 0x01 : 0) | (chkO2.Checked ? 0x02 : 0) | (chkO3.Checked ? 0x04 : 0) | (chkO4.Checked ? 0x08 : 0));
+
+            switch (_timAction) {
+                case 0:
+                    command |= outputMask;
+                    break;
+
+                case 1:
+                    command &= (byte)(byte.MaxValue ^ outputMask);
+                    break;
+
+                case 2:
+                    command ^= outputMask;
+                    break;
+            }
+
+            if (!sendCommand(command)) {
+                mniAutomationTimerEnable.Checked = false; // Stop timer in case of IO error.
+            }
+        }
+
+        private bool sendCommand(byte command) {
+            command &= byte.MaxValue ^ 0xF0;
+            command |= 0x80;
+
+            try {
+                sp.Write(new byte[] { command }, 0, 1);
+            } catch {
+                return false;
+            }
+
+            return true;
+        }
+
+        private void mniAutomationTimerTargetO1_Click(object sender, EventArgs e) {
+            ToolStripMenuItem mni = (ToolStripMenuItem) sender;
+            log($"Timer target is set to {mni.Text}");
+            _timTarget = (byte) mni.GetCurrentParent().Items.IndexOf(mni);
+        }
+
+        private void mniAutomationTimerActionActivate_Click(object sender, EventArgs e) {
+            ToolStripMenuItem mni = (ToolStripMenuItem) sender;
+            log($"Timer action is set to {mni.Text.ToLower()}");
+            _timAction = (byte) mni.GetCurrentParent().Items.IndexOf(mni);
+        }
+
+        private void mniAutomationTimerEnable_CheckedChanged(object sender, EventArgs e) {
+            tim.Enabled = mniAutomationTimerEnable.Checked;
+            if (tim.Enabled) {
+                log("Timer is enabled");
+            } else {
+                log("Timer is disabled");
+            }
         }
     }
 }

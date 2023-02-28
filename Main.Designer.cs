@@ -68,6 +68,20 @@
             this.lblI1 = new System.Windows.Forms.Label();
             this.txtHintI1 = new System.Windows.Forms.TextBox();
             this.tim = new System.Windows.Forms.Timer(this.components);
+            this.mnuAutomation = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAutomationTimerAction = new System.Windows.Forms.ToolStripMenuItem();
+            this.mniAutomationTimerActionActivate = new System.Windows.Forms.ToolStripMenuItem();
+            this.mniAutomationTimerActionDeactivate = new System.Windows.Forms.ToolStripMenuItem();
+            this.mniAutomationTimerActionToggle = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAutomationTimerTarget = new System.Windows.Forms.ToolStripMenuItem();
+            this.mniAutomationTimerTargetO1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mniAutomationTimerTargetO2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mniAutomationTimerTargetO3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mniAutomationTimerTargetO4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mniAutomationTimerSetInterval = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mniAutomationTimerEnable = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.grpO1.SuspendLayout();
             this.grpO3.SuspendLayout();
@@ -92,7 +106,8 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.mnuPort,
-            this.workspaceToolStripMenuItem});
+            this.workspaceToolStripMenuItem,
+            this.mnuAutomation});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(809, 24);
@@ -110,7 +125,7 @@
             // mniExit
             // 
             this.mniExit.Name = "mniExit";
-            this.mniExit.Size = new System.Drawing.Size(92, 22);
+            this.mniExit.Size = new System.Drawing.Size(180, 22);
             this.mniExit.Text = "Exit";
             this.mniExit.Click += new System.EventHandler(this.mniExit_Click);
             // 
@@ -127,14 +142,14 @@
             // mniPortClose
             // 
             this.mniPortClose.Name = "mniPortClose";
-            this.mniPortClose.Size = new System.Drawing.Size(103, 22);
+            this.mniPortClose.Size = new System.Drawing.Size(180, 22);
             this.mniPortClose.Text = "Close";
             this.mniPortClose.Click += new System.EventHandler(this.mniPortClose_Click);
             // 
             // mniPortCloseSeparator
             // 
             this.mniPortCloseSeparator.Name = "mniPortCloseSeparator";
-            this.mniPortCloseSeparator.Size = new System.Drawing.Size(100, 6);
+            this.mniPortCloseSeparator.Size = new System.Drawing.Size(177, 6);
             // 
             // workspaceToolStripMenuItem
             // 
@@ -149,14 +164,14 @@
             // mniWorkspaceNew
             // 
             this.mniWorkspaceNew.Name = "mniWorkspaceNew";
-            this.mniWorkspaceNew.Size = new System.Drawing.Size(110, 22);
+            this.mniWorkspaceNew.Size = new System.Drawing.Size(180, 22);
             this.mniWorkspaceNew.Text = "New";
             this.mniWorkspaceNew.Click += new System.EventHandler(this.mniWorkspaceNew_Click);
             // 
             // mniWorkspaceReload
             // 
             this.mniWorkspaceReload.Name = "mniWorkspaceReload";
-            this.mniWorkspaceReload.Size = new System.Drawing.Size(110, 22);
+            this.mniWorkspaceReload.Size = new System.Drawing.Size(180, 22);
             this.mniWorkspaceReload.Text = "Reload";
             this.mniWorkspaceReload.DropDownOpening += new System.EventHandler(this.mniWorkspaceReload_DropDownOpening);
             this.mniWorkspaceReload.Click += new System.EventHandler(this.mniWorkspaceReload_Click);
@@ -164,7 +179,7 @@
             // mniWorkspaceSave
             // 
             this.mniWorkspaceSave.Name = "mniWorkspaceSave";
-            this.mniWorkspaceSave.Size = new System.Drawing.Size(110, 22);
+            this.mniWorkspaceSave.Size = new System.Drawing.Size(180, 22);
             this.mniWorkspaceSave.Text = "Save";
             this.mniWorkspaceSave.Click += new System.EventHandler(this.mniWorkspaceSave_Click);
             // 
@@ -420,6 +435,123 @@
             this.txtHintI1.Size = new System.Drawing.Size(208, 20);
             this.txtHintI1.TabIndex = 1;
             // 
+            // tim
+            // 
+            this.tim.Interval = 1000;
+            this.tim.Tick += new System.EventHandler(this.tim_Tick);
+            // 
+            // mnuAutomation
+            // 
+            this.mnuAutomation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.timerToolStripMenuItem});
+            this.mnuAutomation.Name = "mnuAutomation";
+            this.mnuAutomation.Size = new System.Drawing.Size(83, 20);
+            this.mnuAutomation.Text = "Automation";
+            // 
+            // timerToolStripMenuItem
+            // 
+            this.timerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuAutomationTimerTarget,
+            this.mnuAutomationTimerAction,
+            this.mniAutomationTimerSetInterval,
+            this.toolStripMenuItem1,
+            this.mniAutomationTimerEnable});
+            this.timerToolStripMenuItem.Name = "timerToolStripMenuItem";
+            this.timerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.timerToolStripMenuItem.Text = "Timer";
+            // 
+            // mnuAutomationTimerAction
+            // 
+            this.mnuAutomationTimerAction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mniAutomationTimerActionActivate,
+            this.mniAutomationTimerActionDeactivate,
+            this.mniAutomationTimerActionToggle});
+            this.mnuAutomationTimerAction.Name = "mnuAutomationTimerAction";
+            this.mnuAutomationTimerAction.Size = new System.Drawing.Size(180, 22);
+            this.mnuAutomationTimerAction.Text = "Action";
+            // 
+            // mniAutomationTimerActionActivate
+            // 
+            this.mniAutomationTimerActionActivate.Name = "mniAutomationTimerActionActivate";
+            this.mniAutomationTimerActionActivate.Size = new System.Drawing.Size(180, 22);
+            this.mniAutomationTimerActionActivate.Text = "Activate";
+            this.mniAutomationTimerActionActivate.Click += new System.EventHandler(this.mniAutomationTimerActionActivate_Click);
+            // 
+            // mniAutomationTimerActionDeactivate
+            // 
+            this.mniAutomationTimerActionDeactivate.Name = "mniAutomationTimerActionDeactivate";
+            this.mniAutomationTimerActionDeactivate.Size = new System.Drawing.Size(180, 22);
+            this.mniAutomationTimerActionDeactivate.Text = "Deactivate";
+            this.mniAutomationTimerActionDeactivate.Click += new System.EventHandler(this.mniAutomationTimerActionActivate_Click);
+            // 
+            // mniAutomationTimerActionToggle
+            // 
+            this.mniAutomationTimerActionToggle.Name = "mniAutomationTimerActionToggle";
+            this.mniAutomationTimerActionToggle.Size = new System.Drawing.Size(180, 22);
+            this.mniAutomationTimerActionToggle.Text = "Toggle";
+            this.mniAutomationTimerActionToggle.Click += new System.EventHandler(this.mniAutomationTimerActionActivate_Click);
+            // 
+            // mnuAutomationTimerTarget
+            // 
+            this.mnuAutomationTimerTarget.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mniAutomationTimerTargetO1,
+            this.mniAutomationTimerTargetO2,
+            this.mniAutomationTimerTargetO3,
+            this.mniAutomationTimerTargetO4});
+            this.mnuAutomationTimerTarget.Name = "mnuAutomationTimerTarget";
+            this.mnuAutomationTimerTarget.Size = new System.Drawing.Size(180, 22);
+            this.mnuAutomationTimerTarget.Text = "Target";
+            // 
+            // mniAutomationTimerTargetO1
+            // 
+            this.mniAutomationTimerTargetO1.Name = "mniAutomationTimerTargetO1";
+            this.mniAutomationTimerTargetO1.Size = new System.Drawing.Size(180, 22);
+            this.mniAutomationTimerTargetO1.Text = "Output 1";
+            this.mniAutomationTimerTargetO1.Click += new System.EventHandler(this.mniAutomationTimerTargetO1_Click);
+            // 
+            // mniAutomationTimerTargetO2
+            // 
+            this.mniAutomationTimerTargetO2.Name = "mniAutomationTimerTargetO2";
+            this.mniAutomationTimerTargetO2.Size = new System.Drawing.Size(180, 22);
+            this.mniAutomationTimerTargetO2.Text = "Output 2";
+            this.mniAutomationTimerTargetO2.Click += new System.EventHandler(this.mniAutomationTimerTargetO1_Click);
+            // 
+            // mniAutomationTimerTargetO3
+            // 
+            this.mniAutomationTimerTargetO3.Name = "mniAutomationTimerTargetO3";
+            this.mniAutomationTimerTargetO3.Size = new System.Drawing.Size(180, 22);
+            this.mniAutomationTimerTargetO3.Text = "Output 3";
+            this.mniAutomationTimerTargetO3.Click += new System.EventHandler(this.mniAutomationTimerTargetO1_Click);
+            // 
+            // mniAutomationTimerTargetO4
+            // 
+            this.mniAutomationTimerTargetO4.Name = "mniAutomationTimerTargetO4";
+            this.mniAutomationTimerTargetO4.Size = new System.Drawing.Size(180, 22);
+            this.mniAutomationTimerTargetO4.Text = "Output 4";
+            this.mniAutomationTimerTargetO4.Click += new System.EventHandler(this.mniAutomationTimerTargetO1_Click);
+            // 
+            // mniAutomationTimerSetInterval
+            // 
+            this.mniAutomationTimerSetInterval.Name = "mniAutomationTimerSetInterval";
+            this.mniAutomationTimerSetInterval.Size = new System.Drawing.Size(180, 22);
+            this.mniAutomationTimerSetInterval.Text = "Set Interval...";
+            this.mniAutomationTimerSetInterval.Click += new System.EventHandler(this.mniAutomationTimerSetInterval_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // mniAutomationTimerEnable
+            // 
+            this.mniAutomationTimerEnable.CheckOnClick = true;
+            this.mniAutomationTimerEnable.Enabled = false;
+            this.mniAutomationTimerEnable.Name = "mniAutomationTimerEnable";
+            this.mniAutomationTimerEnable.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.mniAutomationTimerEnable.Size = new System.Drawing.Size(180, 22);
+            this.mniAutomationTimerEnable.Text = "Enabled";
+            this.mniAutomationTimerEnable.CheckedChanged += new System.EventHandler(this.mniAutomationTimerEnable_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,6 +639,20 @@
         private System.Windows.Forms.ToolStripMenuItem mniWorkspaceReload;
         private System.Windows.Forms.ToolStripMenuItem mniWorkspaceSave;
         private System.Windows.Forms.Timer tim;
+        private System.Windows.Forms.ToolStripMenuItem mnuAutomation;
+        private System.Windows.Forms.ToolStripMenuItem timerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuAutomationTimerAction;
+        private System.Windows.Forms.ToolStripMenuItem mniAutomationTimerActionActivate;
+        private System.Windows.Forms.ToolStripMenuItem mniAutomationTimerActionDeactivate;
+        private System.Windows.Forms.ToolStripMenuItem mniAutomationTimerActionToggle;
+        private System.Windows.Forms.ToolStripMenuItem mnuAutomationTimerTarget;
+        private System.Windows.Forms.ToolStripMenuItem mniAutomationTimerTargetO1;
+        private System.Windows.Forms.ToolStripMenuItem mniAutomationTimerTargetO2;
+        private System.Windows.Forms.ToolStripMenuItem mniAutomationTimerTargetO3;
+        private System.Windows.Forms.ToolStripMenuItem mniAutomationTimerTargetO4;
+        private System.Windows.Forms.ToolStripMenuItem mniAutomationTimerSetInterval;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mniAutomationTimerEnable;
     }
 }
 
